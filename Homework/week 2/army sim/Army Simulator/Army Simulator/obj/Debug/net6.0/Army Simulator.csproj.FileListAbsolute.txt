@@ -1,0 +1,15 @@
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\bin\Debug\net6.0\Army Simulator.exe
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\bin\Debug\net6.0\Army Simulator.deps.json
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\bin\Debug\net6.0\Army Simulator.runtimeconfig.json
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\bin\Debug\net6.0\Army Simulator.dll
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\bin\Debug\net6.0\Army Simulator.pdb
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.csproj.AssemblyReference.cache
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.AssemblyInfoInputs.cache
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.AssemblyInfo.cs
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.csproj.CoreCompileInputs.cache
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.dll
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\refint\Army Simulator.dll
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.pdb
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\Army Simulator.genruntimeconfig.cache
+C:\Users\Teddy\Documents\GitHub\Unity-course\Homework\week 2\army sim\Army Simulator\Army Simulator\obj\Debug\net6.0\ref\Army Simulator.dll
