@@ -15,9 +15,11 @@ namespace Army_Simulator.Src.Unit
         public Ability Ability { get; private set; }
         public int Attack { get; private set; }
         public int Health { get; private set; }
-        public string Allegeance { get; private set; }
+        public string Allegeance { get;  set; }
+        public int Row { get; set; }
+        public int Col { get; set; }
 
-        public Unit(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance)
+        public Unit(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance, int row, int col)
         {
             UnitName = unitName;
             Level = level;
@@ -27,6 +29,8 @@ namespace Army_Simulator.Src.Unit
             Attack = attack;
             Health = health;
             Allegeance = allegeance;
+            Row = row;
+            Col = col;
         }
 
         void UnitInterface.AbilityInfo(Unit unit)
@@ -89,6 +93,12 @@ namespace Army_Simulator.Src.Unit
 
         }
 
+        public override string ToString()
+        {
+            return "\n\n Name: " + UnitName + "\n Level: " + Level + "\n Xp: " + Xp + "\n Range: " +
+             Range + "\n" + Ability.ToString() + "\n Attack: " + Attack + "\n Health: " + Health;
+
+        }
 
         public bool IsAlly(Unit unit, Unit unit1)
         {

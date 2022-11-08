@@ -6,29 +6,25 @@ using System.Threading.Tasks;
 
 namespace Army_Simulator.Src.Unit
 {
-    internal class Army 
+    public class Army 
     {
-        private List<Unit> Units { get; set; }
+        public List<Unit> Units { get; set; }
 
         public Army(List<Unit> units)
         {
             Units = units;
         }
 
-        public override string ToString()
+
+
+
+        public void PrintArmy()
         {
-            return base.ToString();
+            for (int i = 0; i < Units.Count; i++)
+            {
+                Console.WriteLine(Units[i].ToString());
+            }
         }
-
-
-
-        //public void PrintArmy()
-        //{
-        //    for(int i = 0; i < Units.Count; i++)
-        //    {
-        //        Units[i]
-        //    }
-        //}
 
 
     }
