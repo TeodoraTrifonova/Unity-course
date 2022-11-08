@@ -33,6 +33,21 @@ namespace Army_Simulator.Src.Unit
             Col = col;
         }
 
+        public Unit(Unit unit)
+        {
+            UnitName=unit.UnitName;
+            Level = unit.Level;
+            Xp = unit.Xp;
+            Range = unit.Range;
+            Ability = unit.Ability;
+            Attack = unit.Attack;
+            Health = unit.Health;
+            Allegeance = unit.Allegeance;
+            Row=unit.Row;
+            Col = unit.Col;
+        }
+
+
         void UnitInterface.AbilityInfo(Unit unit)
         {
             unit.Ability.ToString();

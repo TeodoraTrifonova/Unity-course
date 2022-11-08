@@ -54,7 +54,8 @@ namespace Army_Simulator.Src.Unit
                 {
                     choice = Convert.ToInt32(Console.ReadLine());
                     unitsRemaining--;
-                    army1Units.Add(allUnits[choice - 1]);
+                    Unit unit = new Unit(allUnits[choice - 1]);
+                    army1Units.Add(unit);
                     unitCount++;
                 }
                 catch (Exception e) when (e is FormatException || e is ArgumentOutOfRangeException)
@@ -71,7 +72,7 @@ namespace Army_Simulator.Src.Unit
             Console.WriteLine("\n\nInput player name: ");
             string player = Console.ReadLine();
 
-            foreach (Unit unit in allUnits)
+            foreach (Unit unit in army1Units)
             {
                 unit.Allegeance = player;
             }
