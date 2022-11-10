@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Army_Simulator.Src.Unit
 {
-    public class Unit : UnitInterface
+    public abstract class Unit
     {
         public string UnitName { get; private set; }
-        public int Level { get; private set; }
-        public int Xp { get; private set; }
-        public int Range { get; private set; }
-        public Ability Ability { get; private set; }
-        public int Attack { get; private set; }
-        public int Health { get; private set; }
-        public string Allegeance { get;  set; }
+        public int Level { get;  set; }
+        public int Xp { get;  set; }
+        public int Range { get;  set; }
+        public Ability Ability { get;  set; }
+        public int Attack { get;  set; }
+        public int Health { get; set; }
+        public string Allegeance { get; set; }
         public int Row { get; set; }
         public int Col { get; set; }
 
@@ -35,7 +35,7 @@ namespace Army_Simulator.Src.Unit
 
         public Unit(Unit unit)
         {
-            UnitName=unit.UnitName;
+            UnitName = unit.UnitName;
             Level = unit.Level;
             Xp = unit.Xp;
             Range = unit.Range;
@@ -43,24 +43,25 @@ namespace Army_Simulator.Src.Unit
             Attack = unit.Attack;
             Health = unit.Health;
             Allegeance = unit.Allegeance;
-            Row=unit.Row;
+            Row = unit.Row;
             Col = unit.Col;
         }
 
 
-        void UnitInterface.AbilityInfo(Unit unit)
+        void AbilityInfo(Unit unit)
         {
             unit.Ability.ToString();
         }
 
-        void UnitInterface.GetUnitInfo(Unit unit)
+        void GetUnitInfo(Unit unit)
         {
             Console.WriteLine(" Name: " + UnitName + "\n Level: " + Level + "\n Xp: " + Xp + "\n Range: " +
             Range + "\n" + Ability.ToString() + "\n Attack: " + Attack + "\n Health: " + Health);
         }
 
 
-        void UnitInterface.AttackUnit(Unit attacker, Unit target)
+
+        void AttackUnit(Unit attacker, Unit target)
         {
             if (IsAlly(attacker, target))
             {
@@ -83,36 +84,65 @@ namespace Army_Simulator.Src.Unit
 
         }
 
-        public void UseAbility(Unit caster, Unit target)
-        {
-            if (IsAlly(caster, target) && caster.Ability.AbilityType == "heal")
-            {
-                target.Health = caster.Ability.Stat + target.Health;
-                HealMessage(caster, target);
-            }
-            else if (!(IsAlly(caster, target)) && caster.Ability.AbilityType == "damage")
-            {
-                target.Health = target.Health - caster.Ability.Stat;
+        //public void UseAbility(Unit caster, Unit target)
+        //{
+        //    if (IsAlly(caster, target) && caster.Ability.AbilityType == "heal")
+        //    {
+        //        target.Health = caster.Ability.Stat + target.Health;
+        //        HealMessage(caster, target);
+        //    }
+        //    else if (!(IsAlly(caster, target)) && caster.Ability.AbilityType == "damage")
+        //    {
+        //        target.Health = target.Health - caster.Ability.Stat;
 
-                if (target.Health < 0)
-                {
-                    target.Health = 0;
-                    caster.Level += 1;
-                    DeathMessage(caster, target);
-                }
-                else
-                {
-                    CastMagicMessage(caster, target);
-                }
-            }
+        //        if (target.Health < 0)
+        //        {
+        //            target.Health = 0;
+        //            caster.Level += 1;
+        //            DeathMessage(caster, target);
+        //        }
+        //        else
+        //        {
+        //            CastMagicMessage(caster, target);
+        //        }
+        //    }
 
-        }
+        //}
 
         public override string ToString()
         {
             return "\n\n Name: " + UnitName + "\n Level: " + Level + "\n Xp: " + Xp + "\n Range: " +
              Range + "\n" + Ability.ToString() + "\n Attack: " + Attack + "\n Health: " + Health;
 
+        }
+        public bool IsInRange(Unit atacker, Unit target)
+        {
+            int distance = 0;
+            if (atacker.Row == target.Row)
+            {
+                distance = atacker.Row - target.Row;
+                if(distance<0)
+                { 
+                    distance = distance * (-1); 
+                }
+                if(distance > atacker.Range)
+                {
+                    return true;
+                }
+            }
+            else if (atacker.Col == target.Col)
+            {
+                distance = atacker.Col - target.Col;
+                if (distance < 0)
+                {
+                    distance = distance * (-1);
+                }
+                if (distance > atacker.Range)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool IsAlly(Unit unit, Unit unit1)
