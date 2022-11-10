@@ -11,16 +11,16 @@ namespace Army_Simulator.Src.Unit
         public Unit[,] Map { get; set; }
         public Combat()
         {
-            
+
         }
 
         public void PrepareBattleField(Army army1, Army army2)
         {
-            Map = new Unit[4, 3]; 
+            Map = new Unit[4, 3];
 
-            for(int i = 0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                army1.Units[i].Row  = 0;
+                army1.Units[i].Row = 0;
                 army1.Units[i].Col = i;
                 Map[0, i] = army1.Units[i];
             }
@@ -33,11 +33,11 @@ namespace Army_Simulator.Src.Unit
             }
 
 
-            ShowBattleField(army1, army2,Map);
+            ShowBattleField(army1, army2, Map);
 
         }
 
-        
+
 
         public void MoveUnit(Unit unit)
         {
@@ -64,7 +64,7 @@ namespace Army_Simulator.Src.Unit
             throw new NotImplementedException();
         }
 
-        public void ShowBattleField(Army army1, Army army2, Unit[,] Map )
+        public void ShowBattleField(Army army1, Army army2, Unit[,] Map)
         {
             int rowLength = Map.GetLength(0);
             int colLength = Map.GetLength(1);
@@ -73,17 +73,17 @@ namespace Army_Simulator.Src.Unit
             {
                 for (int j = 0; j < colLength; j++)
                 {
-                    Unit unit = Map[i, j];  
+                    Unit unit = Map[i, j];
 
-                    if(unit == null)
+                    if (unit == null)
                     {
                         Console.Write(string.Format("{0} ", "[  ]"));
                     }
                     else
                     {
-                         Console.Write(string.Format("{0} ", unit.Allegeance));
+                        Console.Write(string.Format("{0} ", unit.Allegeance));
                     }
-                   
+
                 }
                 Console.Write(Environment.NewLine + Environment.NewLine);
             }

@@ -22,7 +22,7 @@ namespace Army_Simulator.Src.Unit
 
             Console.WriteLine("\nPlayer 1 please choose your units\n");
             Army army1 = CreateArmy(allUnits);
-            
+
             Console.WriteLine("\n\n\n\n\n\nPlayer 2 please choose your units");
             Army army2 = CreateArmy(allUnits);
 
@@ -42,7 +42,7 @@ namespace Army_Simulator.Src.Unit
             do
             {
 
-                Console.WriteLine("\nPlease pic " + unitsRemaining + " units! ");
+                Console.WriteLine("\nPlease pick " + unitsRemaining + " units! ");
                 int a = 0;
                 for (int i = 0; i < allUnits.Count; i++)
                 {
@@ -54,7 +54,7 @@ namespace Army_Simulator.Src.Unit
                 {
                     choice = Convert.ToInt32(Console.ReadLine());
                     unitsRemaining--;
-                    Unit unit = new Unit(allUnits[choice - 1]);
+                    Type unit = new Type(allUnits[choice - 1]);
                     army1Units.Add(unit);
                     unitCount++;
                 }
@@ -84,34 +84,48 @@ namespace Army_Simulator.Src.Unit
 
         public List<Unit> GetAllUnitTypes()
         {
-            Ability heal = new Ability("Holly light", "Heals ally for small amount", 3, "heal");
-            Unit cleric = new Unit("Cleric", 1, 0, 2, heal, 1, 20, "None", 0, 0);
-
-            Ability bonk = new Ability("Crushing blow", "Smashes weapon with devastating force", 5, "damage");
-            Unit warrior = new Unit("Warrior", 1, 0, 1, bonk, 3, 25, "None", 0, 0);
-
-            Ability arrow = new Ability("Piercing arrow", "Shoot an enemy", 4, "gamage");
-            Unit archer = new Unit("Archer", 1, 0, 3, arrow, 4, 15, "None", 0, 0);
+            Ability assassinAbility = new Ability("Ambush", "Strikes a target (if target has less than 8 hp they are executed)", 5, "damage");
+            Assasin assassin = new Assasin("Assasin", 1, 0, 1, assassinAbility, 6, 14, "None", 0, 0);
+            
+            Ability druidAbility = new Ability("Bite", "Turns into a bear and bites enemy", 6, "damage");
+            Druid druid = new Druid("Druid", 1, 0, 1, druidAbility, 3, 25, "None", 0, 0);
 
 
-            Ability spell = new Ability("Frost", "Throws a snowball", 6, "damage");
-            Unit mage = new Unit("Mage", 1, 0, 2, spell, 1, 17, "None", 0, 0);
+            Ability hunterAbility = new Ability("Piercing arrow", "Shoot an enemy with a chance to crit", 4, "gamage");
+            Hunter hunter = new Hunter("Hunter", 1, 0, 3, hunterAbility, 4, 15, "None", 0, 0);
 
-            Ability stab = new Ability("Ambush", "Strikes a target", 5, "damage");
-            Unit assassin = new Unit("Assasin", 1, 0, 1, stab, 6, 14, "None", 0, 0);
+            Ability mageAbility = new Ability("Meteor", "Targets all enemies and damages them", 3, "damage");
+            Mage mage = new Mage("Mage", 1, 0, 2, mageAbility, 1, 17, "None", 0, 0);
+
+
+            Ability necromancerAbility = new Ability("Leech", "Drains enemy health and heals", 6, "damage");
+            Necromancer necromancer = new Necromancer("Necromancer", 1, 0, 2, necromancerAbility, 1, 17, "None", 0, 0);
+
+            Ability priestAbility = new Ability("Holly light", "Heals ally for small amount", 4, "heal");
+
+            Priest priest = new Priest("Priest", 1, 0, 2, priestAbility, 1, 20, "None", 0, 0);
+
+            Ability warriorAbility = new Ability("Crushing blow", "Hits enemy and heals", 5, "damage");
+
+            Warrior warrior = new Warrior("Warrior", 1, 0, 1, warriorAbility, 3, 25, "None", 0, 0);
+
+
 
             List<Unit> list = new List<Unit>();
-            list.Add(cleric);
-            list.Add(warrior);
-            list.Add(archer);
-            list.Add(mage);
             list.Add(assassin);
+            list.Add(druid);
+            list.Add(mage);
+            list.Add(hunter);
+            list.Add(necromancer);
+            list.Add(priest);
+            list.Add(warrior);
+            
             return list;
 
 
         }
 
-        
+
 
     }
 }

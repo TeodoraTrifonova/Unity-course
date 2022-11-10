@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Army_Simulator.Src.Unit
 {
-    public class Warrior : Unit
+    public class Druid : Unit
     {
-
-        public Warrior(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance, int row, int col) : base(unitName, level, xp, range, ability, attack, health, allegeance, row, col)
+        public Druid(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance, int row, int col) : base(unitName, level, xp, range, ability, attack, health, allegeance, row, col)
         {
-        
         }
 
         public void UseAbility(Unit caster, Unit target)
@@ -19,7 +17,7 @@ namespace Army_Simulator.Src.Unit
             if (IsInRange(caster, target) && !(IsAlly(caster, target)))
             {
                 target.Health = target.Health - caster.Ability.Stat;
-                caster.Health = caster.Ability.Stat/2 + caster.Health;
+               
                 if (target.Health < 0)
                 {
                     target.Health = 0;
@@ -33,7 +31,4 @@ namespace Army_Simulator.Src.Unit
             }
         }
     }
-
-
 }
-

@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 
 namespace Army_Simulator.Src.Unit
 {
-    public class Warrior : Unit
+    public class Hunter : Unit
     {
-
-        public Warrior(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance, int row, int col) : base(unitName, level, xp, range, ability, attack, health, allegeance, row, col)
+        public Hunter(string unitName, int level, int xp, int range, Ability ability, int attack, int health, string allegeance, int row, int col) : base(unitName, level, xp, range, ability, attack, health, allegeance, row, col)
         {
-        
         }
 
         public void UseAbility(Unit caster, Unit target)
         {
             if (IsInRange(caster, target) && !(IsAlly(caster, target)))
             {
-                target.Health = target.Health - caster.Ability.Stat;
-                caster.Health = caster.Ability.Stat/2 + caster.Health;
+                Random random = new Random();
+                int crit = random.Next(0, 100);
+                if (crit < 50)
+                {
+
+                    target.Health = target.Health - caster.Ability.Stat;
+                }
+                else
+                {
+                    target.Health = target.Health - caster.Ability.Stat * 2;
+                }
+
                 if (target.Health < 0)
                 {
                     target.Health = 0;
@@ -30,10 +38,8 @@ namespace Army_Simulator.Src.Unit
                 {
                     CastMagicMessage(caster, target);
                 }
+
             }
         }
     }
-
-
 }
-
