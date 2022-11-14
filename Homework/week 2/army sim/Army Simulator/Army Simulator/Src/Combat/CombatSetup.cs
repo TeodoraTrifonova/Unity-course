@@ -47,15 +47,19 @@ namespace Army_Simulator.Src.Unit
                 for (int i = 0; i < allUnits.Count; i++)
                 {
                     a = i + 1;
-                    Console.WriteLine("\n " + a + " " + allUnits[i].UnitName.ToString());
+                    Console.WriteLine( a + " " + allUnits[i].UnitName.ToString());
                 }
 
                 try
                 {
                     choice = Convert.ToInt32(Console.ReadLine());
                     unitsRemaining--;
-                  //  Type unit = new Type(allUnits[choice - 1]);
-                   // army1Units.Add(unit);
+                    Ability assassinAbility = new Ability("Ambush", "Strikes a target (if target has less than 8 hp they are executed)", 5, "damage");
+                    Assasin assassin = new Assasin("Assasin", 1, 0, 1, assassinAbility, 6, 14, "None", 0, 0);
+
+
+                    //  Type unit = new Type(allUnits[choice - 1]);
+                    army1Units.Add(assassin);
                     unitCount++;
                 }
                 catch (Exception e) when (e is FormatException || e is ArgumentOutOfRangeException)
@@ -86,7 +90,7 @@ namespace Army_Simulator.Src.Unit
         {
             Ability assassinAbility = new Ability("Ambush", "Strikes a target (if target has less than 8 hp they are executed)", 5, "damage");
             Assasin assassin = new Assasin("Assasin", 1, 0, 1, assassinAbility, 6, 14, "None", 0, 0);
-            
+
             Ability druidAbility = new Ability("Bite", "Turns into a bear and bites enemy", 6, "damage");
             Druid druid = new Druid("Druid", 1, 0, 1, druidAbility, 3, 25, "None", 0, 0);
 
@@ -102,11 +106,9 @@ namespace Army_Simulator.Src.Unit
             Necromancer necromancer = new Necromancer("Necromancer", 1, 0, 2, necromancerAbility, 1, 17, "None", 0, 0);
 
             Ability priestAbility = new Ability("Holly light", "Heals ally for small amount", 4, "heal");
-
             Priest priest = new Priest("Priest", 1, 0, 2, priestAbility, 1, 20, "None", 0, 0);
 
             Ability warriorAbility = new Ability("Crushing blow", "Hits enemy and heals", 5, "damage");
-
             Warrior warrior = new Warrior("Warrior", 1, 0, 1, warriorAbility, 3, 25, "None", 0, 0);
 
 
@@ -119,11 +121,12 @@ namespace Army_Simulator.Src.Unit
             list.Add(necromancer);
             list.Add(priest);
             list.Add(warrior);
-            
+
             return list;
 
 
         }
+
 
 
 

@@ -8,11 +8,11 @@ namespace Army_Simulator.Src.Unit
 {
     public interface CombatInterface
     {
-        public void MoveUnit(Unit unit);
-        public bool CanAttack(Unit attacker, Unit defender);
-        public bool CanMove(Unit unit, string direction);
-        public bool PositionIsEmpty(List<Unit> army1, List<Unit> army2);
-        public void MoveUnit(Unit unit, string direction);
+   
+        public bool CanAttack(Unit attacker, Unit defender, Unit[,] Map);
+        public bool CanMove(Unit unit, string direction, Unit[,] Map);
+        public bool PositionIsEmpty(int row, int col);
+        public void MoveUnit(Unit unit, Unit[,] Map);
         public void ShowBattleField(Army army1, Army army2, Unit[,] Map );
 
     }

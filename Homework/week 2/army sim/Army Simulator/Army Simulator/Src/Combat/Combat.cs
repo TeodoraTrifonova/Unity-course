@@ -9,10 +9,7 @@ namespace Army_Simulator.Src.Unit
     public class Combat : CombatInterface
     {
         public Unit[,] Map { get; set; }
-        public Combat()
-        {
 
-        }
 
         public void PrepareBattleField(Army army1, Army army2)
         {
@@ -34,41 +31,15 @@ namespace Army_Simulator.Src.Unit
 
 
             ShowBattleField(army1, army2, Map);
-
+            DisplayLegend();
         }
 
-
-
-        public void MoveUnit(Unit unit)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanAttack(Unit attacker, Unit defender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CanMove(Unit unit, string direction)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool PositionIsEmpty(List<Unit> army1, List<Unit> army2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MoveUnit(Unit unit, string direction)
-        {
-            throw new NotImplementedException();
-        }
 
         public void ShowBattleField(Army army1, Army army2, Unit[,] Map)
         {
             int rowLength = Map.GetLength(0);
             int colLength = Map.GetLength(1);
-
+            Console.Write(string.Format("\t"));
             for (int i = 0; i < rowLength; i++)
             {
                 for (int j = 0; j < colLength; j++)
@@ -77,17 +48,157 @@ namespace Army_Simulator.Src.Unit
 
                     if (unit == null)
                     {
-                        Console.Write(string.Format("{0} ", "[  ]"));
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(string.Format("{0} ", "[   ]"));
                     }
                     else
                     {
-                        Console.Write(string.Format("{0} ", unit.Allegeance));
+                        if (army1.Units.Contains(unit))
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.Write(string.Format("{0} ", "[ " + unit.UnitName[0] + " ]"));
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(string.Format("{0} ", "[ " + unit.UnitName[0] + " ]"));
+                        }
+
                     }
 
                 }
-                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.Write(Environment.NewLine + Environment.NewLine + "\t");
             }
-            Console.ReadLine();
+
+        }
+
+        public void DisplayLegend()
+        {
+            Console.BackgroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(string.Format(" ** MAP LEGEND **"));
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(string.Format("\n\tA - Assasin "));
+            Console.Write(string.Format("\n\tD - Driud"));
+            Console.Write(string.Format("\n\tH - Hunter"));
+            Console.Write(string.Format("\n\tM - Mage"));
+            Console.Write(string.Format("\n\tN - Necromancer"));
+            Console.Write(string.Format("\n\tP - Priest"));
+            Console.Write(string.Format("\n\tW - Warrior\n"));
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+
+        public bool CanAttack(Unit attacker, Unit defender, Unit[,] Map)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanMove(Unit unit, string direction, Unit[,] Map)
+        {
+            switch (direction)
+            {
+                case "up":
+
+                    if (PositionIsEmpty(unit.Row + 1, unit.Col))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    break;
+
+                case "down":
+                    if (PositionIsEmpty(unit.Row - 1, unit.Col))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    break;
+
+                case "left":
+
+                    if (PositionIsEmpty(unit.Row, unit.Col - 1))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    break;
+
+                case "right":
+                    if (PositionIsEmpty(unit.Row, unit.Col + 1))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    break;
+
+                case "default":
+                    Console.WriteLine("\nWrong direction!");
+                    return false;
+                    break;
+            }
+            return false;
+        }
+
+        public void MoveUnit(Unit unit, Unit[,] Map)
+        {
+            Console.WriteLine("Where do you want to go?  up/down/left/right\n");
+            string direction = Console.ReadLine();
+            if (CanMove(unit, direction, Map))
+            {
+                Unit temp = unit;
+                switch (direction)
+                {
+                    case "up":
+                        unit.Row++;
+                        Map[temp.Row, temp.Col] = null; 
+                        break;
+
+                    case "down":
+                        unit.Row--;
+                        Map[temp.Row, temp.Col] = null;
+                        break;
+
+                    case "left":
+                        unit.Col--;
+                        Map[temp.Row, temp.Col] = null;
+                        break;
+
+                    case "right":
+                        unit.Col++;
+                        Map[temp.Row, temp.Col] = null;
+                        break;
+
+                    case "default":
+                        Console.WriteLine("\nWrong direction!");
+
+                        break;
+                }
+
+            }
+        }
+
+        public bool PositionIsEmpty(int row, int col)
+        {
+
+            if (Map[row, col] == null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

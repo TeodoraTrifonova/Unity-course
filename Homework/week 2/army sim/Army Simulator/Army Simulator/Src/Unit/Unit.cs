@@ -84,30 +84,6 @@ namespace Army_Simulator.Src.Unit
 
         }
 
-        //public void UseAbility(Unit caster, Unit target)
-        //{
-        //    if (IsAlly(caster, target) && caster.Ability.AbilityType == "heal")
-        //    {
-        //        target.Health = caster.Ability.Stat + target.Health;
-        //        HealMessage(caster, target);
-        //    }
-        //    else if (!(IsAlly(caster, target)) && caster.Ability.AbilityType == "damage")
-        //    {
-        //        target.Health = target.Health - caster.Ability.Stat;
-
-        //        if (target.Health < 0)
-        //        {
-        //            target.Health = 0;
-        //            caster.Level += 1;
-        //            DeathMessage(caster, target);
-        //        }
-        //        else
-        //        {
-        //            CastMagicMessage(caster, target);
-        //        }
-        //    }
-
-        //}
 
         public override string ToString()
         {
