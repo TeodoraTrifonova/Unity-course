@@ -54,8 +54,8 @@ namespace Army_Simulator.Src.Unit
                 {
                     choice = Convert.ToInt32(Console.ReadLine());
                     unitsRemaining--;
-                    Type unit = new Type(allUnits[choice - 1]);
-                    army1Units.Add(unit);
+                  //  Type unit = new Type(allUnits[choice - 1]);
+                   // army1Units.Add(unit);
                     unitCount++;
                 }
                 catch (Exception e) when (e is FormatException || e is ArgumentOutOfRangeException)
