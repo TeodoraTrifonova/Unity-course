@@ -56,7 +56,10 @@ namespace Army_Simulator.Src.Unit
                     unitsRemaining--;
                     Ability assassinAbility = new Ability("Ambush", "Strikes a target (if target has less than 8 hp they are executed)", 5, "damage");
                     Assasin assassin = new Assasin("Assasin", 1, 0, 1, assassinAbility, 6, 14, "None", 0, 0);
-
+                    //gettype vrushta string (moga taka)
+                    // dr opciq e da vzema da go napravq s enum - vs obekt da ima enum
+                    //treta opciq, unit ima bonus pole krusteno nomer i da gi gepam po tova, sled koeto da 
+                    // imama vunshen method s koito da vurna
 
                     //  Type unit = new Type(allUnits[choice - 1]);
                     army1Units.Add(assassin);
